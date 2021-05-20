@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const { sequelize } = require('./models');
+var cors = require('cors');
 
 sequelize.sync({ alter: false }) //바꾸기
     .then(() => {
@@ -15,13 +16,13 @@ sequelize.sync({ alter: false }) //바꾸기
 
 var indexRouter = require('./routes');
 
-
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));

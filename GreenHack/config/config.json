@@ -4,7 +4,8 @@
     "password": "green1111",
     "database": "green_db",
     "host": "greenhack.c9oqp85i3fqn.ap-northeast-2.rds.amazonaws.com",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "timezone": "+09:00"
   },
   "test": {
     "username": "root",

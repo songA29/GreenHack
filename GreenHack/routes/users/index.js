@@ -4,7 +4,7 @@ const router = express.Router();
 const util = require('../../modules/util');
 const responseMessage = require('../../modules/responseMessage');
 const statusCode = require('../../modules/statusCode');
-const { User } = require('../../models');
+const { User } = require('../../models'); //models/index가 정의된 상대경로
 
 // 회원가입
 router.post('/signup', async (req, res) => {
