@@ -2,7 +2,7 @@
   "development": {
     "username": "user",
     "password": "green1111",
-    "database": "GreenHack",
+    "database": "green_db",
     "host": "greenhack.c9oqp85i3fqn.ap-northeast-2.rds.amazonaws.com",
     "dialect": "mysql"
   },
