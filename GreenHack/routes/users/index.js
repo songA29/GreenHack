@@ -8,7 +8,7 @@ const { User, Interest, UserInterest } = require('../../models'); //models/index
 
 // 회원가입
 router.post('/signup', async (req, res) => {
-    const { email, password, nickName, user_interest } = req.body; //배열로 받기
+    const { email, password, nickName, interest } = req.body; //배열로 받기
 
     //2. request data 확인하기, email, password, userName data가 없다면 NullValue 반환
     if(!email || !password || !nickName || !user_interest){
@@ -44,7 +44,7 @@ router.post('/signup', async (req, res) => {
     const user_id = user.id;
 
     // 배열을 문자열로 바꿔주고(join) 문자열 쪼개기
-    const userInterests = user_interest.join().split(",");
+    const userInterests = interest.join().split(",");
 
     // 쪼갠 데이터를 저장해서 for문을 통해 Interest_id 가져오기
     for(interest of userInterests) {
