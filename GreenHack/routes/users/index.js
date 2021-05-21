@@ -59,7 +59,7 @@ router.post('/signup', async (req, res) => {
         // userInterest 테이블에 외래키 user_id, interest_id 저장
             let userInterests = await UserInterest.create({
                     user_id,
-                    interest_id: interestNm.id
+                    interest_id: interestName.id
         });
 
     }
