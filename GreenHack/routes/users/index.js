@@ -126,7 +126,7 @@ router.get('/:id', async (req, res) => {
             attributes: ['id', 'email', 'nickName'],
         });
 
-        const interest =  await UserInterest.findOne({
+        const interest =  await Interest.findOne({
                where: {
                   user_id: id,
                },
