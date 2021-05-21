@@ -124,6 +124,10 @@ router.get('/:id', async (req, res) => {
                 id: id,
             },
             attributes: ['id', 'email', 'nickName'],
+            include: [{
+                model: Interest,
+                attributes: ['kind'],
+            }]
         });
 
         const interest =  await UserInterest.findOne({

@@ -25,6 +25,10 @@ db.UserInterest = require('./user_interest')(sequelize, Sequelize);
 db.User.hasMany(db.Post, {foreignKey: 'user_id'});
 db.Post.belongsTo(db.User, {foreignKey: 'user_id'});
 
+//User:Interest => 1:N
+db.User.hasMany(db.Interest, {foreignKey: 'user_id'});
+db.Interest.belongsTo(db.User, {foreignKey: 'user_id'});
+
 
 //N:M
 //User:Interest => user_interest
