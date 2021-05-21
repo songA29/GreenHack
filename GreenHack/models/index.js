@@ -25,9 +25,6 @@ db.RecyclingStatus = require('./recycling_status')(sequelize, Sequelize);
 db.User.hasMany(db.Post, {foreignKey: 'user_id'});
 db.Post.belongsTo(db.User, {foreignKey: 'user_id'});
 
-//Post:Interest => 1:N
-
-
 
 //N:M
 //User:Interest => user_interest
