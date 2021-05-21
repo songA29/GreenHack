@@ -43,11 +43,8 @@ router.post('/signup', async (req, res) => {
 
     const user_id = user.id;
 
-    // 배열을 문자열로 바꿔주기
-    interest.join();
-
-    // 문자열 쪼개기
-    const user_interests = interest.split(",");
+    // 배열을 문자열로 바꿔주고 문자열 쪼개기
+    const user_interests = interest.join().split(",");
 
     //
     for(interest of user_interests) {
