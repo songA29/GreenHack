@@ -8,10 +8,10 @@ const { User } = require('../../models'); //models/index가 정의된 상대경�
 
 // 회원가입
 router.post('/signup', async (req, res) => {
-    const { email, password, nickName } = req.body;
+    const { email, password, nickName, interest } = req.body;
 
     //2. request data 확인하기, email, password, userName data가 없다면 NullValue 반환
-    if(!email || !password || !nickName){
+    if(!email || !password || !nickName || !interest){
         console.log('필요한 값이 없습니다');
         return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
     }
@@ -39,6 +39,10 @@ router.post('/signup', async (req, res) => {
         password: hashedPassword,
         nickName: nickName,
         salt: salt,
+    });
+
+    const interest = await Interest.create({
+        interest: interest,
     });
     console.log(user);
 
