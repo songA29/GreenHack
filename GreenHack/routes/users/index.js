@@ -11,7 +11,7 @@ router.post('/signup', async (req, res) => {
     const { email, password, nickName, interest } = req.body; //배열로 받기
 
     //2. request data 확인하기, email, password, userName data가 없다면 NullValue 반환
-    if(!email || !password || !nickName || !user_interest){
+    if(!email || !password || !nickName || !interest){
         console.log('필요한 값이 없습니다');
         return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
     }
