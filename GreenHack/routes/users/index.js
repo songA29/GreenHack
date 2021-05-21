@@ -113,7 +113,7 @@ router.post('/signin', async (req, res) => {
     }
 })
 
-//
+// 아이디별 user 정보
 router.get('/:id', async (req, res) => {
     //1. parameter로 id값을 받아온다! (id값은 인덱스값), user_id
     const { id } = req.params;
@@ -125,8 +125,8 @@ router.get('/:id', async (req, res) => {
             },
             attributes: ['id', 'email', 'nickName'],
             include: [{
-                model: Interest,
-                attributes: ['id', 'kind'],
+                model: UserInterest,
+                attributes: ['interest_id'],
             }]
         });
         if(!user) {
