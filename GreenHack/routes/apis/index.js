@@ -9,7 +9,7 @@ const { Emissions, RecyclingStatus } = require('../../models'); //models/indexê°
 router.get('/emissions', async (req, res) => {
     try{
        const emissions = await Emissions.findAll({
-        attributes: ['year', 'total_emissions', 'waste_incineration'],
+        attributes: ['year', 'waste_total', 'reclaim', 'sewage', 'incinerate', 'etc'],
         });
        console.log(emissions);
 
