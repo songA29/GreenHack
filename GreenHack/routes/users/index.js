@@ -8,7 +8,7 @@ const { User, Interest, UserInterest } = require('../../models'); //models/index
 
 // 회원가입
 router.post('/signup', async (req, res) => {
-    const { email, password, nickName, interest } = req.body;
+    const { email, password, nickName, interest } = req.body; //배열
 
     //2. request data 확인하기, email, password, userName data가 없다면 NullValue 반환
     if(!email || !password || !nickName || !interest){
@@ -30,7 +30,7 @@ router.post('/signup', async (req, res) => {
     //4. salt 생성
     const salt = crypto.randomBytes(64).toString('base64');
 
-    //5. 2차 세미나때 배웠던 pbkdf2 방식으로 (비밀번호 + salt) => 암호화된 password
+    //5. pbkdf2 방식으로 (비밀번호 + salt) => 암호화된 password
     const hashedPassword = crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('base64');
 
     //6. User email, 암호화된 password, salt, userName 생성!
@@ -43,17 +43,30 @@ router.post('/signup', async (req, res) => {
 
     const user_id = user.id;
 
-    let interestName = await Interest.findOne({
-        where: {
-            kind: interest.join(" "),
-        },
-            attributes: ['id'],
-        })
+    // 배열을 문자열로 바꿔주기
+    interest.join(" ");
 
-    let userInterests = await UserInterest.create({
-            user_id,
-            interest_id: interestName.id
-        });
+    // 문자열 쪼개기
+    const user_interests = interest.split(",");
+
+    //
+    for(interest of user_interests) {
+
+        // interest id find
+        let interestName = await Interest.findOne({
+                where: {
+                    kind: interest,
+                },
+                    attributes: ['id'],
+                })
+
+        // userInterest 에 저장
+            let userInterests = await UserInterest.create({
+                    user_id,
+                    interest_id: interestName.id
+            });
+
+    }
 
     console.log(user);
 
