@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('Interest', {
         kind: {
-            type: DataTypes.STRING(50),
+            type: DataTypes.STRING,
             allowNull: false,
         },
     },{
