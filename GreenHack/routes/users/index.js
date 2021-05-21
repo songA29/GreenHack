@@ -8,7 +8,7 @@ const { User, Interest, UserInterest } = require('../../models'); //models/index
 
 // 회원가입
 router.post('/signup', async (req, res) => {
-    const { email, password, nickName, user_interest } = req.body; //배열
+    const { email, password, nickName, user_interest } = req.body; //배열로 받기
 
     //2. request data 확인하기, email, password, userName data가 없다면 NullValue 반환
     if(!email || !password || !nickName || !user_interest){
@@ -48,11 +48,10 @@ router.post('/signup', async (req, res) => {
 
     //
     for(interest of userInterests) {
-
         // interest id find
         let interestName = await Interest.findOne({
                 where: {
-                    kind: interest,
+                    kind: interest
                 },
                     attributes: ['id'],
                 })
