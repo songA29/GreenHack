@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    return sequelize.define('Emssions', {
+    return sequelize.define('Emissions', {
             year: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
