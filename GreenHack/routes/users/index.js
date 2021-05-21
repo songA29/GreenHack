@@ -8,9 +8,8 @@ const { User, Interest, UserInterest } = require('../../models'); //models/index
 
 // 회원가입
 router.post('/signup', async (req, res) => {
-    const { email, password, nickName, interest } = req.body; //배열
-    const interestName;
-    
+    const { email, password, nickName, user_interest } = req.body; //배열
+
     //2. request data 확인하기, email, password, userName data가 없다면 NullValue 반환
     if(!email || !password || !nickName || !interest){
         console.log('필요한 값이 없습니다');
@@ -44,16 +43,16 @@ router.post('/signup', async (req, res) => {
 
     const user_id = user.id;
 
-    // 배열을 문자열로 바꿔주고 문자열 쪼개기
-    const user_interests = interest.join().split(",");
+    // 배열을 문자열로 바꿔주고(join) 문자열 쪼개기
+    const userInterests = user_interest.join().split(",");
 
     //
-    for(interestName of user_interests) {
+    for(interest of userInterests) {
 
         // interest id find
         let interestName = await Interest.findOne({
                 where: {
-                    kind: interestName,
+                    kind: interest,
                 },
                     attributes: ['id'],
                 })
