@@ -4,6 +4,7 @@ module.exports = {
 
     /* Api */
     API_READ_ALL_SUCCESS: "api 조회 성공",
+    API_READ_ALL_FAIL: "로그인 실패.",
 
     /* Member */
     MEMBER_CREATE_SUCCESS: "회원 생성 성공",

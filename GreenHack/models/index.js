@@ -21,4 +21,22 @@ db.UserInterest = require('./user_interest')(sequelize, Sequelize);
 db.Emissions = require('./emissions')(sequelize, Sequelize);
 db.RecyclingStatus = require('./recycling_status')(sequelize, Sequelize);
 
+//User:Post => 1:N
+db.User.hasMany(db.Post, {foreignKey: user_id});
+db.Post.belongsTo(db.User, {foreignKey: user_id});
+
+
+//N:M
+//User:Interest => user_interest
+db.User.belongsToMany(db.Interest, {through: 'UserInterest', as: 'Chosen', foreignKey: 'user_id'});
+db.Interest.belongsToMany(db.User, {through: 'UserInterest', as: 'Chooser', foreignKey: 'interest_id'});
+
+//Post:Interest => post_interest
+db.Post.belongsToMany(db.Interest, {through: 'PostInterest', as: 'Done', foreignKey: 'post_id'});
+db.Interest.belongsToMany(db.Post, {through: 'PostInterest', as: 'Doer', foreignKey: 'interest_id'});
+
+//User:Post => scrap
+db.User.belongsToMany(db.Post, {through: 'Scrap', as: 'Scraped', foreignKey: 'user_id'});
+db.Post.belongsToMany(db.User,  {through: 'Scrap', as: 'Scraper', foreignKey: 'post_id'});
+
 module.exports = db;

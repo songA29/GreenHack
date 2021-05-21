@@ -17,7 +17,7 @@ router.get('/emissions', async (req, res) => {
        return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.API_READ_ALL_SUCCESS, emissions));
     }catch(error){
         console.error(error);
-        return res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.USER_READ_ALL_FAIL));
+        return res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.API_READ_ALL_FAIL));
     }
 })
 
@@ -32,7 +32,7 @@ router.get('/status', async (req, res) => {
        return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.API_READ_ALL_SUCCESS, status));
     }catch(error){
         console.error(error);
-        return res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.USER_READ_ALL_FAIL));
+        return res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.API_READ_ALL_FAIL));
     }
 })
 module.exports = router;
