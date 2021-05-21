@@ -4,7 +4,7 @@ const router = express.Router();
 const util = require('../../modules/util');
 const responseMessage = require('../../modules/responseMessage');
 const statusCode = require('../../modules/statusCode');
-const { User } = require('../../models'); //models/index가 정의된 상대경로
+const { User, Interest } = require('../../models'); //models/index가 정의된 상대경로
 
 // 회원가입
 router.post('/signup', async (req, res) => {
@@ -40,6 +40,23 @@ router.post('/signup', async (req, res) => {
         nickName: nickName,
         salt: salt,
     });
+    const user_id = user.id;
+
+    const userInterest = interest.split(",");
+
+    for(interest of userInterest) {
+        var userInterest = await Interest.findOne({
+            where: {
+                interest: interest
+            },
+            attributes: ['id']
+        })
+
+        var userInterests = await UserInterest.create({
+            user_id,
+            interest_id: userInterest.id
+        }) ;
+    }
 
     const interest = await Interest.create({
         interest: interest,
@@ -47,7 +64,7 @@ router.post('/signup', async (req, res) => {
     console.log(user);
 
     //7. status: 200 message: SING_UP_SUCCESS, data: id, email, userName 반환! (비밀번호, salt 반환 금지!!)
-    return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.SIGN_UP_SUCCESS, { id: user.id, email, nickName }));
+    return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.SIGN_UP_SUCCESS, { id: user.id, email, nickName, interest }));
     } catch(error) {
 
     console.error(error);
