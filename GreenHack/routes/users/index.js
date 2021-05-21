@@ -47,11 +47,11 @@ router.post('/signup', async (req, res) => {
     const userInterests = interest.join().split(",");
 
     // 쪼갠 데이터를 저장해서 for문을 통해 Interest_id 가져오기
-    for(interest of userInterests) {
+    for(user_interest of userInterests) {
         // interest id find
         let interestName = await Interest.findOne({
                 where: {
-                    kind: interest
+                    kind: user_interest
                 },
                     attributes: ['id'],
                 })
