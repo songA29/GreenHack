@@ -47,12 +47,12 @@ router.post('/signup', async (req, res) => {
     const user_interests = interest.join().split(",");
 
     //
-    for(interest of user_interests) {
+    for(interestName of user_interests) {
 
         // interest id find
         let interestName = await Interest.findOne({
                 where: {
-                    kind: interest,
+                    kind: interestName,
                 },
                     attributes: ['id'],
                 })
@@ -61,7 +61,7 @@ router.post('/signup', async (req, res) => {
             let userInterests = await UserInterest.create({
                     user_id,
                     interest_id: interestName.id
-            });
+        });
 
     }
 
