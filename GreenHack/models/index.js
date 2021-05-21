@@ -22,8 +22,8 @@ db.Emissions = require('./emissions')(sequelize, Sequelize);
 db.RecyclingStatus = require('./recycling_status')(sequelize, Sequelize);
 
 //User:Post => 1:N
-db.User.hasMany(db.Post, {foreignKey: user_id});
-db.Post.belongsTo(db.User, {foreignKey: user_id});
+db.User.hasMany(db.Post, {foreignKey: 'user_id'});
+db.Post.belongsTo(db.User, {foreignKey: 'user_id'});
 
 
 //N:M
