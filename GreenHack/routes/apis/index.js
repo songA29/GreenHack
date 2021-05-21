@@ -24,12 +24,12 @@ router.get('/emissions', async (req, res) => {
 //재활용 현황
 router.get('/status', async (req, res) => {
     try{
-       const emissions = await Emissions.findAll({
+       const status = await RecyclingStatus.findAll({
         attributes: ['category', 'recycled_waste_volume', 'sales_volume', 'total_sales', 'price_per_ton'],
         });
-       console.log(emissions);
+       console.log(status);
 
-       return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.API_READ_ALL_SUCCESS, emissions));
+       return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.API_READ_ALL_SUCCESS, status));
     }catch(error){
         console.error(error);
         return res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.USER_READ_ALL_FAIL));
