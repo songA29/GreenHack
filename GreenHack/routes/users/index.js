@@ -126,11 +126,18 @@ router.get('/:id', async (req, res) => {
             attributes: ['id', 'email', 'nickName'],
         });
 
-        const user_interest =  await UserInterest.findOne({
+        const user_interest_id =  await UserInterest.findOne({
                where: {
                   user_id: id,
                },
                attributes: ['interest_id'],
+        });
+
+        const user_interest_st = await Interest.findOne({
+                where: {
+                    id: user_interest_id,
+                },
+                attributes: ['kind']
         });
 
         if(!user) {
@@ -138,7 +145,7 @@ router.get('/:id', async (req, res) => {
             return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.NO_USER));
         }
         //3. status:200 message: READ_USER_SUCCESS, id, email, nickName, id, kind 반환
-        return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.READ_USER_SUCCESS, {user, user_interest}));
+        return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.READ_USER_SUCCESS, {user, user_interest_st}));
        } catch (error) {
             console.error(error);
             return res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.USER_READ_ALL_FAIL));
