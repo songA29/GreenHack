@@ -124,11 +124,15 @@ router.get('/:id', async (req, res) => {
                 id: id,
             },
             attributes: ['id', 'email', 'nickName'],
-            include: [{
-                model: UserInterest,
-                attributes: ['interest_id'],
-            }]
         });
+
+        const user_interest =  await UserInterest.findOne({
+               where: {
+                  user_id: id,
+               },
+               attributes: ['interest_id'],
+        });
+
         if(!user) {
             console.log('존재하지 않는 아이디 입니다.');
             return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.NO_USER));
