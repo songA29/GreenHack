@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('Interest', {
-        interest: {
+        kind: {
             type: DataTypes.STRING(50),
             allowNull: false,
         },

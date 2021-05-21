@@ -42,12 +42,12 @@ router.post('/signup', async (req, res) => {
     });
     const user_id = user.id;
 
-    const userInterest = interest.split(",");
+    const user_interest = interest.split(",");
 
     for(interest of userInterest) {
         var userInterest = await Interest.findOne({
             where: {
-                interest: interest
+                kind: interest
             },
             attributes: ['id']
         })
@@ -58,9 +58,6 @@ router.post('/signup', async (req, res) => {
         }) ;
     }
 
-    const interest = await Interest.create({
-        interest: interest,
-    });
     console.log(user);
 
     //7. status: 200 message: SING_UP_SUCCESS, data: id, email, userName 반환! (비밀번호, salt 반환 금지!!)
