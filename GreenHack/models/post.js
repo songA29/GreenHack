@@ -8,10 +8,6 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.STRING(500),
                 allowNull: false,
             },
-            img: { // 수정하기!
-                type: DataTypes.STRING(200),
-                allowNull: true,
-            },
         }, {
             //모델의 옵션들을 지정하는곳
             freezeTableName: true, //모든 TableName을 복수형이 아닌 Model을 설정할때 이름 그대로 사용하게, 모델명과 DB 테이블 이름을 동일하게 설정해줌
