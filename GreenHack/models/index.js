@@ -18,6 +18,8 @@ db.Interest = require('./interest')(sequelize, Sequelize);
 db.Post = require('./post')(sequelize, Sequelize);
 db.Emissions = require('./emissions')(sequelize, Sequelize);
 db.RecyclingStatus = require('./recycling_status')(sequelize, Sequelize);
+db.PostInterest = require('./post_interest')(sequelize, Sequelize);
+db.UserInterest = require('./user_interest')(sequelize, Sequelize);
 
 //User:Post => 1:N
 db.User.hasMany(db.Post, {foreignKey: 'user_id'});

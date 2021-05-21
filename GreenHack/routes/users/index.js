@@ -46,7 +46,7 @@ router.post('/signup', async (req, res) => {
     // 배열을 문자열로 바꿔주고(join) 문자열 쪼개기
     const userInterests = user_interest.join().split(",");
 
-    //
+    // 쪼갠 데이터를 저장해서 for문을 통해 Interest_id 가져오기
     for(interest of userInterests) {
         // interest id find
         let interestName = await Interest.findOne({
@@ -56,10 +56,10 @@ router.post('/signup', async (req, res) => {
                     attributes: ['id'],
                 })
 
-        // userInterest 에 저장
+        // userInterest 테이블에 외래키 user_id, interest_id 저장
             let userInterests = await UserInterest.create({
                     user_id,
-                    interest_id: interestName.id
+                    interest_id: interestNm.id
         });
 
     }
