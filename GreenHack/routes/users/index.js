@@ -9,7 +9,8 @@ const { User, Interest, UserInterest } = require('../../models'); //models/index
 // 회원가입
 router.post('/signup', async (req, res) => {
     const { email, password, nickName, interest } = req.body; //배열
-
+    const interestName;
+    
     //2. request data 확인하기, email, password, userName data가 없다면 NullValue 반환
     if(!email || !password || !nickName || !interest){
         console.log('필요한 값이 없습니다');
