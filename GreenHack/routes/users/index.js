@@ -115,7 +115,7 @@ router.post('/signin', async (req, res) => {
 
 //
 router.get('/:id', async (req, res) => {
-    //1. parameter로 id값을 받아온다! (id값은 인덱스값)
+    //1. parameter로 id값을 받아온다! (id값은 인덱스값), user_id
     const { id } = req.params;
     //2. id값이 유효한지 체크! 존재하지 않는 아이디면 NO_USER 반환
     try{
@@ -124,6 +124,10 @@ router.get('/:id', async (req, res) => {
                 id: id,
             },
             attributes: ['id', 'email', 'nickName'],
+            include: [{
+                model: Interest,
+                attributes: ['id', 'kind'],
+            }]
         });
         if(!user) {
             console.log('존재하지 않는 아이디 입니다.');
