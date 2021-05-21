@@ -4,7 +4,7 @@ const router = express.Router();
 const util = require('../../modules/util');
 const responseMessage = require('../../modules/responseMessage');
 const statusCode = require('../../modules/statusCode');
-const { User, Interest } = require('../../models'); //models/index가 정의된 상대경로
+const { User, Interest, UserInterest } = require('../../models'); //models/index가 정의된 상대경로
 
 // 회원가입
 router.post('/signup', async (req, res) => {
@@ -40,6 +40,7 @@ router.post('/signup', async (req, res) => {
         nickName: nickName,
         salt: salt,
     });
+
     const user_id = user.id;
 
     const user_interest = interest.split(",");
@@ -49,7 +50,7 @@ router.post('/signup', async (req, res) => {
             where: {
                 kind: interest
             },
-            attributes: ['id']
+            attributes: ['id'],
         })
 
         let userInterests = await UserInterest.create({
