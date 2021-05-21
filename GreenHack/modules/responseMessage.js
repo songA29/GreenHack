@@ -2,10 +2,13 @@ module.exports = {
     NULL_VALUE: "필요한 값이 없습니다.",
     OUT_OF_VALUE: "파라미터 값이 잘못 되었습니다.",
 
+    /* Api */
+    API_READ_ALL_SUCCESS: "api 조회 성공",
+
     /* Member */
     MEMBER_CREATE_SUCCESS: "회원 생성 성공",
     MEMBER_READ_SUCCESS: "회원 조회 성공",
-    MEMBER_READ_ALL_SUCCESS: "전체 회원 조회성공",
+    MEMBER_READ_ALL_SUCCESS: "전체 회원 조회 성공",
     MEMBER_UPDATE_SUCCESS: "회원 수정 성공",
     MEMBER_DELETE_SUCCESS: "회원 삭제 성공",
 
