@@ -16,8 +16,6 @@ db.Sequelize = Sequelize;
 db.User = require('./user')(sequelize, Sequelize);
 db.Interest = require('./interest')(sequelize, Sequelize);
 db.Post = require('./post')(sequelize, Sequelize);
-db.PostInterest = require('./post_interest')(sequelize, Sequelize);
-db.UserInterest = require('./user_interest')(sequelize, Sequelize);
 db.Emissions = require('./emissions')(sequelize, Sequelize);
 db.RecyclingStatus = require('./recycling_status')(sequelize, Sequelize);
 

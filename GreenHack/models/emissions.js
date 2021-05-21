@@ -4,11 +4,23 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
-            total_emissions: {
+            waste_total: {
                 type: DataTypes.DOUBLE,
                 allowNull: false,
             },
-            waste_incineration: {
+            reclaim: {
+                type: DataTypes.DOUBLE,
+                allowNull: false,
+            },
+            sewage: {
+                type: DataTypes.DOUBLE,
+                allowNull: false,
+            },
+            incinerate: {
+                type: DataTypes.DOUBLE,
+                allowNull: false,
+            },
+            etc: {
                 type: DataTypes.DOUBLE,
                 allowNull: false,
             },
