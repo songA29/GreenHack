@@ -124,10 +124,6 @@ router.get('/:id', async (req, res) => {
                 id: id,
             },
             attributes: ['id', 'email', 'nickName'],
-            include: [{
-                model: Interest,
-                attributes: ['id', 'kind'],
-            }]
         });
         if(!user) {
             console.log('존재하지 않는 아이디 입니다.');
