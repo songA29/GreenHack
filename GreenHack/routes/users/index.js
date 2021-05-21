@@ -124,17 +124,13 @@ router.get('/:id', async (req, res) => {
                 id: id,
             },
             attributes: ['id', 'email', 'nickName'],
-            include: [{
-                model: Interest,
-                attributes: ['kind'],
-            }]
         });
 
         const interest =  await UserInterest.findOne({
                where: {
                   user_id: id,
                },
-               attributes: ['interest_id'],
+               attributes: ['kind'],
         });
 
         if(!user) {
